@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mi primera página web</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  color: #222;
+  margin: 0;
+  padding: 20px;
+  transition: background 0.5s, color 0.5s;
+}
+
+.dark{
+  background:#121212;
+  color:#f2f2f2;
+}
+
+h1{
+  text-align:center;
+  font-size:40px;
+}
+
+.card{
+  max-width:700px;
+  margin:20px auto;
+  padding:20px;
+  border-radius:15px;
+  background:white;
+  box-shadow:0 10px 20px rgba(0,0,0,0.15);
+  transition: background 0.5s;
+}
+
+.dark .card{
+  background:#1e1e1e;
+}
+
+img{
+  width:100%;
+  border-radius:12px;
+  margin-top:10px;
+}
+
+button{
+  padding:10px 18px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:16px;
+  margin-top:10px;
+}
+
+.toggle{
+  display:block;
+  margin:20px auto;
+}
+
+.frase{
+  font-style:italic;
+  text-align:center;
+  margin-top:10px;
+  color:#6b4eff;
+}
+
+.dark .frase{
+  color:#ffd86b;
+}
+
+#reloj{
+  text-align:center;
+  font-size:24px;
+  margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🌐 Mi primera página web</h1>
+<p style="text-align:center;"><b>Mariela Alejandra Caamal Canul</b></p>
+
+<button class="toggle" onclick="modo()">🌙 / ☀️ Cambiar modo</button>
+
+<div class="card">
+  <h2></h2>
+  <p>
+    Esta es mi primera pagina web, no es algo profesional pero hice lo mejor que puede.
+  </p>
+
+  <img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
+</div>
+
+<div class="card">
+  <h2>✨ Frase del día</h2>
+  <p class="frase" id="frase"></p>
+</div>
+
+<div class="card">
+  <h2>⏰ Reloj digital</h2>
+  <div id="reloj"></div>
+</div>
+
+<div class="card">
+  <h2>Recuerda</h2>
+  <p>
+    Nada es impsible si te lo propones.
+  </p>
+</div>
+
+<script>
+// ---- FRASES ALEATORIAS ----
+const frases=[
+ "El conocimiento digital abre nuevas oportunidades.",
+ "Aprender tecnología es invertir en el futuro.",
+ "La creatividad también se programa.",
+ "Cada página web comienza con una idea.",
+ "La innovación nace del aprendizaje constante."
+];
+
+document.getElementById("frase").innerText =
+ frases[Math.floor(Math.random()*frases.length)];
+
+// ---- RELOJ ----
+function reloj(){
+ const now = new Date();
+ let h = now.getHours().toString().padStart(2,"0");
+ let m = now.getMinutes().toString().padStart(2,"0");
+ let s = now.getSeconds().toString().padStart(2,"0");
+ document.getElementById("reloj").innerText = `${h}:${m}:${s}`;
+}
+setInterval(reloj,1000);
+reloj();
+
+// ---- MODO OSCURO ----
+function modo(){
+ document.body.classList.toggle("dark");
+}
+</script>
+
+</body>
+</html>
